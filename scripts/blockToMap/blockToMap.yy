@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"blockToMap",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"blockToMap",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

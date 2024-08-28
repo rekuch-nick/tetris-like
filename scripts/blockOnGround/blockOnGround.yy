@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"blockOnGround",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"blockOnGround",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
