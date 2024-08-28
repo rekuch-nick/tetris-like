@@ -16,6 +16,12 @@ if(ms >= 30){
 		ichor();
 	}
 	
+	if(sc % 5 == 0 && lines >= 0){
+		wandererSpawn();
+	}
+	
+	
+	
 	
 	if(sc >= 60){
 		sc -= 60;

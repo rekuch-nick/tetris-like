@@ -53,8 +53,12 @@ function rowDrop(bb) {
 	for(var b=bb; b>0; b--){
 		for(var a=0; a<14; a++){
 			if(ww.bmap[a, b] == noone){
+				
 				ww.bmap[a, b] = ww.bmap[a, b - 1];
 				ww.bmap[a, b - 1] = noone;
+				try {
+					ww.bmap[a, b].ySpot = b;
+				} catch(e){ }
 			}
 		}
 	}

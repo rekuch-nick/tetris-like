@@ -1,4 +1,4 @@
-function blockCollides(blo){
+function blockCollidesPoint(blo, xx, yy){
 	if(blo == noone){ return false; }
 	
 	for(var a=0; a<blo.wid; a++){
@@ -8,11 +8,10 @@ function blockCollides(blo){
 			
 			if(blo.map[a, b] != noone){
 				if(!inBounds(aa, bb)){ return true; }
-				if(ww.bmap[aa, bb] != noone){ return true; }
+				if(a == xx && b == bb){ return true; }
 			}
 		}
 	}
 	
 	return false;
-
 }

@@ -1,8 +1,14 @@
 draw_self();
 //draw_set_alpha(.85);
 for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
-	if(ww.bmap[a, b] != noone){
-		draw_sprite_stretched(ww.bmap[a, b], 0, x + a * 32, y + b * 32, 32, 32);
+	var bb = ww.bmap[a, b];
+	
+	if(bb != noone){
+		
+		try {
+			draw_sprite_stretched(ww.bmap[a, b], 0, x + a * 32, y + b * 32, 32, 32);
+		} catch(e){}
+		
 	}
 }}
 

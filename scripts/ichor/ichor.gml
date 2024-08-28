@@ -20,6 +20,7 @@ function ichor(){
 		}
 	} else if(ickCount < ickMax){
 		while(tries < 200){
+			tries ++;
 			var a = irandom_range(0, 13);
 			var b = irandom_range(0, 17);
 			if(isBlock(a, b) && adjacentTo(a, b, imgBlockIchor)){
