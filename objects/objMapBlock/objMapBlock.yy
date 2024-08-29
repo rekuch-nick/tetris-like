@@ -1,21 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"objWanderer",
+  "%Name":"objMapBlock",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objWanderer",
+  "name":"objMapBlock",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
     "path":"folders/Objects.yy",
   },
-  "parentObjectId":{
-    "name":"objMapBlock",
-    "path":"objects/objMapBlock/objMapBlock.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -34,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"imgBlockWalker",
-    "path":"sprites/imgBlockWalker/imgBlockWalker.yy",
+    "name":"imgBlock02",
+    "path":"sprites/imgBlock02/imgBlock02.yy",
   },
   "spriteMaskId":null,
   "visible":true,

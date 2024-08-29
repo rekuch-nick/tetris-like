@@ -5,7 +5,9 @@ function adjacentTo(a, b, t){
 			var aaa = a + aa;
 			var bbb = b + bb;
 			if(inBounds(aaa, bbb)){
-				if(ww.bmap[aaa, bbb] == t){
+				if(t == noone && ww.bmap[aaa, bbb] == noone){ return true; }
+				else if (ww.bmap[aaa, bbb] != noone && ww.bmap[aaa, bbb].sprite_index == t){
+				
 					return true;
 				}
 			}

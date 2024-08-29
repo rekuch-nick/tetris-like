@@ -8,7 +8,7 @@ function blockCollidesPoint(blo, xx, yy){
 			
 			if(blo.map[a, b] != noone){
 				if(!inBounds(aa, bb)){ return true; }
-				if(a == xx && b == bb){ return true; }
+				if(aa == xx && bb == yy){ return true; }
 			}
 		}
 	}

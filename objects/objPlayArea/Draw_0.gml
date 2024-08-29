@@ -1,5 +1,7 @@
 draw_self();
 //draw_set_alpha(.85);
+
+/*
 for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
 	var bb = ww.bmap[a, b];
 	
@@ -11,7 +13,7 @@ for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
 		
 	}
 }}
-
+*/
 
 
 

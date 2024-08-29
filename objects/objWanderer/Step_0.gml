@@ -1,14 +1,4 @@
 if(ww.state != State.play){ return; }
-if(ww.bmap[xSpot, ySpot] != id){ 
-	for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
-		try{
-			if(ww.bmap[a, b].object_index == objWanderer){
-				ww.bmap[a, b] = noone;
-			}
-		} catch(e){}
-	}}
-	instance_destroy(); return; 
-}
 
 
 moveCD --;

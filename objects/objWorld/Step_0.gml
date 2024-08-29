@@ -8,15 +8,15 @@ if(ms >= 30){
 	ms -= 30;
 	sc ++;
 	
-	if(sc % 30 == 3 && lines > 5){
-		instance_create_depth(room_width, 100, -600, objCherry);
+	if(sc % 30 == 3 && lines > 1){
+		//instance_create_depth(room_width, 100, -600, objCherry);
 	}
 	
-	if(sc % 5 == 0 && lines >= 0){
+	if(sc % 5 == 0 && lines >= 10){
 		ichor();
 	}
 	
-	if(sc % 5 == 0 && lines >= 0){
+	if(sc % 15 == 0 && lines >= 15){
 		wandererSpawn();
 	}
 	

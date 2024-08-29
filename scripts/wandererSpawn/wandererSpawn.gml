@@ -1,7 +1,7 @@
 function wandererSpawn(){
 	
 	if(instance_number(objWanderer) < 1){
-		if(irandom_range(1, 2) >= 1){
+		if(irandom_range(1, 4) == 1){
 			
 			var tries = 0;
 			while(tries < 100){
