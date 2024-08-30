@@ -6,9 +6,28 @@ sprite_index = choose(imgBlock, imgBlock02, imgBlock03, imgBlock04);
 wid = 3;
 hei = 3;
 
-var r = irandom_range(0, 7);
+canTurn = true;
 
-if(r == 0){
+
+var r = irandom_range(0, 7);
+var spec = 0;
+if(irandom_range(1, 5) == 1){ spec = 1; }
+
+if(ww.specBlockIncoming == imgBlockDrillBit){
+	ww.specBlockIncoming = noone;
+	canTurn = false;
+	for(var a=0; a<wid; a++){ for(var b=0; b<hei; b++){ map[a, b] = noone; }}
+	map[1, 0] = imgBlockDrill;
+	map[1, 1] = imgBlockDrill;
+	map[1, 2] = imgBlockDrillBit;
+	
+}else if(ww.specBlockIncoming == imgBlockSeed){
+	ww.specBlockIncoming = noone;
+	wid = 1;
+	hei = 1;
+	map[0, 0] = imgBlockSeed;
+	
+} else if(r == 0){
 	//wid = 2;
 	for(var a=0; a<wid; a++){ for(var b=0; b<hei; b++){ map[a, b] = noone; }}
 	map[1, 0] = sprite_index;

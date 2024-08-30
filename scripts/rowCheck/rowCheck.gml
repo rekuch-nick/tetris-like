@@ -8,7 +8,11 @@ function rowCheck(){
 	for(var b=17; b>=0; b--){
 		var sum = 0;
 		for(var a=0; a<14; a++){
-			if(ww.bmap[a, b] != noone){ sum ++; }
+			if(ww.bmap[a, b] != noone){ 
+				if(ww.bmap[a, b].canBeLine){
+					sum ++; 
+				}
+			}
 		}
 		
 		if(sum >= 14){
@@ -16,13 +20,14 @@ function rowCheck(){
 			for(var a=0; a<14; a++){
 				
 				if(ww.bmap[a, b].sprite_index == imgBlockIchor){
+					ww.bmap[a, b].sprite_index = imgBlockClean;
 					
 				} else if(ww.bmap[a, b].sprite_index == imgBlockWalker){
 					instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effBlockRemove);
 					instance_destroy(ww.bmap[a, b]);
 					ww.bmap[a, b] = instance_create_depth(pa.x + a * 32, pa.y + b * 32, -300, objMapBlock);
-					ww.bmap[a, b].sprite_index = imgBlockIchor;
-					ww.bmap[a, b].standardBlock = false;
+					ww.bmap[a, b].sprite_index = imgBlockStar;
+					//ww.bmap[a, b].standardBlock = false;
 					
 				} else {
 					instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effBlockRemove);
@@ -51,6 +56,8 @@ function rowCheck(){
 	if(lines == 2){ ww.lines2 ++; }
 	if(lines == 3){ ww.lines3 ++; }
 	
+	ww.fallCDMax -= .1;
+	
 }
 
 
@@ -60,14 +67,22 @@ function rowDrop(bb) {
 	
 	for(var b=bb; b>0; b--){
 		for(var a=0; a<14; a++){
-			if(ww.bmap[a, b] == noone){
-				
-				ww.bmap[a, b] = ww.bmap[a, b - 1];
-				ww.bmap[a, b - 1] = noone;
-				if(ww.bmap[a, b] != noone){
-					ww.bmap[a, b].ySpot = b;
-				}
-			}
+			
+			cellDrop(a, b);
+
 		}
 	}
+}
+
+function cellDrop(a, b) {
+	
+	if(ww.bmap[a, b] == noone){
+				
+		ww.bmap[a, b] = ww.bmap[a, b - 1];
+		ww.bmap[a, b - 1] = noone;
+		if(ww.bmap[a, b] != noone){
+			ww.bmap[a, b].ySpot = b;
+		}
+	}
+	
 }

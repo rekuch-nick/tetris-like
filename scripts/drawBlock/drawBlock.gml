@@ -1,5 +1,5 @@
 function drawBlock(a, b, blo){
-	
-	draw_sprite_stretched(blo, image_index, a, b, 32, 32);
+
+	draw_sprite_stretched(blo.map[a, b], image_index, a, b, 32, 32);
 	
 }

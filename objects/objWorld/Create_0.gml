@@ -21,7 +21,14 @@ lines2 = 0;
 lines3 = 0;
 fruit = 0;
 
+pSPawn = 0;
+mp = 0;
+mpMax = 0;
+mpBank = 0;
+
 ms = 0;
 sc = 0;
 mn = 0;
 hr = 0;
+
+specBlockIncoming = noone;

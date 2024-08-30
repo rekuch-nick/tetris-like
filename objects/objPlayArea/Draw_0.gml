@@ -80,3 +80,12 @@ if(ww.fruit > 0){
 
 
 
+if(ww.mpMax > 0){
+	var x1 = x + 12 + sprite_width;
+	var x2 = (room_width - 8);
+	draw_rectangle_color(x1, 8, x2, 32, c_black, c_black, c_black, c_black, false);
+	var w = abs(x1 - x2) * (ww.mp / ww.mpMax);
+	draw_rectangle_color(x1, 8, x1 + w, 32, c_blue, c_blue, c_navy, c_navy, false);
+}
+
+

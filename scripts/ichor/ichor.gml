@@ -27,9 +27,12 @@ function ichor(){
 			if(ww.bmap[a, b] != noone && ww.bmap[a, b].standardBlock && adjacentTo(a, b, imgBlockIchor)){
 				ww.bmap[a, b].sprite_index = imgBlockIchor;
 				ww.bmap[a, b].standardBlock = false;
+				if(choose(true, false)){ ichor(); }
 				return;
 			}
 		}
+		
+		
 	}
 	
 }
