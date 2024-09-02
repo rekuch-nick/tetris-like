@@ -15,3 +15,15 @@ function adjacentTo(a, b, t){
 	}
 	return false;
 }
+
+function adjacentCords(a, b){
+	var result = [];
+	for(var aa=-1; aa<=1; aa++){
+		for(var bb=-1; bb<=1; bb++){
+			if(inBounds(aa, bb)){
+				result[array_length(result)] = {a: aa, b: bb};
+			}
+		}
+	}
+	return result;
+}

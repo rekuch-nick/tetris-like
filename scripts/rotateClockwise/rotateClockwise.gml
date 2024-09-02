@@ -15,9 +15,17 @@ function rotateClockwise(blo) {
 	blo.map = rotated;
 	
 	if(blockCollides(blo)){
-		if(blo.xSpot < 2){ blo.xSpot ++; }
-		else if(blo.xSpot > 11){ blo.xSpot --; }
-		else { rotateClockwise(blo); }
+		if(blo.xSpot < 2){
+			blo.xSpot ++;
+			if(blockCollides(blo)){ blo.xSpot --; }
+		}
+		
+		if(blo.xSpot > 11){
+			blo.xSpot --;
+			if(blockCollides(blo)){ blo.xSpot ++; }
+		}
+		
+		if(blockCollides(blo)){ rotateClockwise(blo); }
 	}
     
 	

@@ -1,6 +1,9 @@
 icd = max(icd - 1, 0);
 input();
 
+if(state == State.pause){
+	if(clickEscape || clickEnter){ state = State.play; return; }
+}
 
 if(state != State.play){ return; }
 ms ++;
@@ -8,26 +11,12 @@ if(ms >= 30){
 	ms -= 30;
 	sc ++;
 	
-	mp = clamp(mp + 1, 0, mpMax);
 	
-	if(sc % 30 == 3 && lines > 5){
-		instance_create_depth(room_width, 100, -600, objCherry);
-	}
+	zoneStuff();
 	
-	if(sc % 5 == 0 && lines >= 10){
-		ichor();
-	}
 	
-	if(sc % 15 == 0 && lines >= 15){
-		wandererSpawn();
-	}
 	
-	//if(sc % 10 == 0 && lines >= 0){
-	if(pSPawn > 10){
-		pSPawn -= irandom_range(floor(pSPawn / 2), pSPawn);
-		specBlockIncoming = choose(imgBlockDrillBit, imgBlockSeed);
-		//specBlockIncoming = imgBlockSeed;
-	}
+	
 	
 	
 	
@@ -39,6 +28,16 @@ if(ms >= 30){
 			hr ++;
 		}
 	}
+}
+
+//water
+if(waterBank > 0){
+	waterBank --;
+	waterLevel = clamp(waterLevel + 1, 0, pa.sprite_height);
+}
+if(waterBank < 0){
+	waterBank ++;
+	waterLevel = clamp(waterLevel - 1, 0, pa.sprite_height);
 }
 
 
@@ -57,7 +56,7 @@ if(activeBlock == noone){
 	
 	
 	nextBlock = instance_create_depth(0, 0, -500, objBlock);
-	fallCD = 0;
+	fallCD = -10;
 	
 	if(blockCollides(activeBlock)){
 		instance_destroy(activeBlock);
@@ -68,6 +67,11 @@ if(activeBlock == noone){
 			ww.bmap[a, b] = noone; 
 		}}
 		fallCDMax = 30;
+		stageScore = 0;
+		score = 0;
+		fish = 0;
+		fruit = 0;
+		//instance_create_depth(0, 0, -1000, objScreenTitle);
 		return;
 	}
 }
@@ -80,44 +84,45 @@ if( (xIn < 0 && icd < 1) || xClick < 0){ slideBlock(activeBlock, -1); icd = 5; }
 if( (xIn > 0 && icd < 1) || xClick > 0){ slideBlock(activeBlock, 1); icd = 5; }
 
 //rapid block
-if(yIn > 0){ fallCD = fallCDMax; }
+if(yIn > 0 && fallCD >= 0){ fallCD = fallCDMax; }
 
-//mp charge
-if(yIn < 0){
-	if(mp >= mpBank){
-		mpBank ++;
-	}
-	if(mpBank >= 150){
-		mpBank = 0;
-		mp -= 150;
-		instance_destroy(activeBlock);
-		activeBlock = noone;
-		return;
-	}
-} else {
-	mpBank = 0;
-}
+
+
 
 //slow block
 if(yIn < 0 && ms % 2 == 0){
 	fallCD --;
 }
 
+
+
 //block falls
 fallCD ++;
 if(fallCD >= fallCDMax){
-		
+	if(activeBlock == noone){ return; }
+	
 	if(blockOnGround(activeBlock)){
 		
 		blockToMap(activeBlock);
 		rowCheck();
 		activeBlock = noone;
 	} else {
+		
+		yLast = activeBlock.ySpot;
 		activeBlock.ySpot ++;
+		blockSplash();
 	}
 	
 	fallCD = 0;
 }
 
+if(clickEscape){ ww.state = State.pause; }
 
-
+//debug
+if(debugPossible){
+	if(clickBackSpace){ debugMode = !debugMode; }
+	if(debugMode){
+		if(clickPageUp){ stageCheck(true); }
+		if(clickPageDown){ zoneListIndex = clamp(zoneListIndex - 2, -1, array_length(zoneList) - 1); stageCheck(true); }
+	}
+}

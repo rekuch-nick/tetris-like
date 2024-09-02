@@ -1,12 +1,7 @@
 function ichor(){
-	var ickCount = 0;
-	var ickMax = 30;
 	
-	for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
-		if(ww.bmap[a, b] != noone && ww.bmap[a, b].sprite_index == imgBlockIchor){
-			ickCount ++;
-		}
-	}}
+	var ickCount = ickCounting();
+	var ickMax = 30;
 	
 	var tries = 0;
 	if(ickCount == 0){
@@ -35,4 +30,15 @@ function ichor(){
 		
 	}
 	
+}
+
+function ickCounting(){
+	var n = 0;
+	for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
+		if(ww.bmap[a, b] != noone && ww.bmap[a, b].sprite_index == imgBlockIchor){
+			n ++;
+			return n;
+		}
+	}}
+	return 0;
 }

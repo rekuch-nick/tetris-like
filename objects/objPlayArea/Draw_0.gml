@@ -17,7 +17,7 @@ for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
 
 
 
-if(ww.activeBlock != noone){
+if(ww.activeBlock != noone && ww.activeBlock.map[0, 0] != imgBlockSun && ww.state != State.pause){
 	draw_set_alpha(.2);
 	for(var a=0; a<ww.activeBlock.wid; a++){
 		var top = -1;
@@ -41,18 +41,33 @@ if(ww.activeBlock != noone){
 		
 	}
 }
-
-
-
-
-
 draw_set_alpha(1);
 
+if(ww.state == State.pause){
+	draw_set_halign(fa_center);
+	draw_text(room_width / 2, room_height / 2, "P A U S E");
+	draw_set_halign(fa_left);
+}
 
 
+draw_text(40, 390, ww.zone);
 
+draw_text(40, 440, "Score");
+draw_text(40, 470, score);
 
+var bb = 500;
+if(ww.fishMatter){
+	draw_sprite_stretched(imgBlockFish, 0, 40, bb, 32, 32);
+	draw_text(80, bb + 6, ww.fish);
+	bb += 40;
+}
+if(ww.fruitsMatter){
+	draw_sprite_stretched(imgCherry, 0, 40, bb, 32, 32);
+	draw_text(80, bb + 6, ww.fruit);
+	bb += 40;
+}
 
+/*
 
 if(ww.lines > 0){
 	draw_sprite_stretched(iconLine, 0, 40, 400, 32, 32);
@@ -88,4 +103,36 @@ if(ww.mpMax > 0){
 	draw_rectangle_color(x1, 8, x1 + w, 32, c_blue, c_blue, c_navy, c_navy, false);
 }
 
+
+*/
+
+
+
+//draw water
+if(ww.waterLevel > 0){
+	var bb = pa.y + (pa.sprite_height - ww.waterLevel);
+	draw_set_alpha(ww.waterAlpha);
+	var c1 = ww.waterCol1;
+	var c2 = ww.waterCol2;
+	var c3 = ww.waterCol3;
+	var c4 = ww.waterCol4;
+	draw_rectangle_color(pa.x, bb, pa.x + pa.sprite_width, pa.y + pa.sprite_height, c1, c2, c3, c4, false);
+	
+	
+	if(ww.waterBank > 0){
+	
+		repeat(2){
+			var aa = irandom_range(pa.x, pa.x + pa.sprite_width - 4);
+			draw_rectangle_color(aa, pa.y, aa + 4, bb, c1, c2, c3, c4, false);
+		}
+	}
+	draw_set_alpha(1);
+}
+
+
+
+if(ww.debugMode){
+	draw_text(32, 0, "Dev Mode ON")
+	
+}
 

@@ -15,5 +15,9 @@ function input(){
 	
 	clickEnter = keyboard_check_pressed(vk_enter);
 	clickSpace = keyboard_check_pressed(vk_space);
-
+	
+	clickBackSpace = keyboard_check_pressed(vk_backspace);
+	clickPageUp = keyboard_check_pressed(vk_pageup);
+	clickPageDown = keyboard_check_pressed(vk_pagedown);
+	clickEscape = keyboard_check_pressed(vk_escape);
 }

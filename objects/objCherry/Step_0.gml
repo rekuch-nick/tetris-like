@@ -28,6 +28,8 @@ if(ww.activeBlock != noone){
 			if(inBounds(aa, bb)){
 				if(aa == xSpot && bb == ySpot){
 					ww.fruit += val;
+					score += 20;
+					//ww.stageScore += 20;
 					instance_create_depth(pa.x + xSpot * 32, pa.y + ySpot * 32, -900, effBlockRemove);
 					instance_destroy();
 				}

@@ -12,11 +12,20 @@ function blockToMap(blo){
 				if(bb < 17 && ww.bmap[aa, bb + 1] != noone && ww.bmap[aa, bb + 1].sprite_index == imgBlockTreeTop){
 					ww.bmap[aa, bb + 1].sprite_index = imgBlockTreeTrunk;
 				}
-			}
+			} 
+			
+			if(map[a, b] == imgBlockFish){ t = objFish; }
+			if(map[a, b] == imgBlockBub){ t = objBubb; }
+			if(map[a, b] == imgBlockMopHead){ t = objMop; }
+			if(map[a, b] == imgBlockSand){ t = objSand; }
 			
 			
 			ww.bmap[aa, bb] = instance_create_depth(pa.x + aa * 32, pa.y + bb * 32, -300, t);
 			ww.bmap[aa, bb].sprite_index = map[a, b];
+			
+			if(map[a, b] == imgBlockChicken){ chickenCheck(aa, bb); }
+			
+			if(map[a, b] == imgBlockRadWaste){ repeat(8){ichor(); } }
 			
 		}}
 		instance_destroy();

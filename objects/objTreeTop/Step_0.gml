@@ -9,7 +9,7 @@ if(grows > 0){
 		if(grows < 1){ canBeLine = true; }
 		
 		
-		if(ySpot > 1){
+		if(ySpot >= 1){
 			if(ww.bmap[xSpot, ySpot - 1] == noone && !blockCollidesPoint(ww.activeBlock, xSpot, ySpot - 1)){
 				var a = xSpot; var b = ySpot;
 				ySpot --;

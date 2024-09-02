@@ -5,7 +5,7 @@ function rowCheck(){
 	var rowsToRemove = [];
 	var lines = 0;
 	
-	for(var b=17; b>=0; b--){
+	for(var b=0; b<18; b++){
 		var sum = 0;
 		for(var a=0; a<14; a++){
 			if(ww.bmap[a, b] != noone){ 
@@ -20,59 +20,43 @@ function rowCheck(){
 			for(var a=0; a<14; a++){
 				
 				if(ww.bmap[a, b].sprite_index == imgBlockIchor){
+					instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effBlockRemove);
 					ww.bmap[a, b].sprite_index = imgBlockClean;
 					
-				} else if(ww.bmap[a, b].sprite_index == imgBlockWalker){
-					instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effBlockRemove);
-					instance_destroy(ww.bmap[a, b]);
-					ww.bmap[a, b] = instance_create_depth(pa.x + a * 32, pa.y + b * 32, -300, objMapBlock);
-					ww.bmap[a, b].sprite_index = imgBlockStar;
-					//ww.bmap[a, b].standardBlock = false;
+				//} else if(ww.bmap[a, b].sprite_index == imgBlockWalker){
+				//	instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effBlockRemove);
+				//	instance_destroy(ww.bmap[a, b]);
+				//	ww.bmap[a, b] = instance_create_depth(pa.x + a * 32, pa.y + b * 32, -300, objMapBlock);
+				//	ww.bmap[a, b].sprite_index = imgBlockStar;
+				//	//ww.bmap[a, b].standardBlock = false;
 					
 				} else {
-					instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effBlockRemove);
-					instance_destroy(ww.bmap[a, b]);
-					ww.bmap[a, b] = noone;
+					scoreBlock(a, b);
+					rowsToRemove[array_length(rowsToRemove)] = {a: a, b1: b, b2: 0};
 				}
 			}
 			
-			rowsToRemove[array_length(rowsToRemove)] = b;
 		}
 		
 	}
 	
+	
 	for(var i=0; i<array_length(rowsToRemove); i++){
-		
-		
-		for(var i=0; i<array_length(rowsToRemove); i++){
-			rowDrop(rowsToRemove[i]);
-			for(var ii=i+1; ii<array_length(rowsToRemove); ii++){
-				rowsToRemove[ii] ++;
-			}
-		}
+		dropCol(rowsToRemove[i].a, rowsToRemove[i].b1, rowsToRemove[i].b2);
 	}
 	
 	ww.lines += lines;
 	if(lines == 2){ ww.lines2 ++; }
 	if(lines == 3){ ww.lines3 ++; }
 	
-	ww.fallCDMax -= .1;
+	//ww.fallCDMax -= .1;
 	
 }
 
 
 
 
-function rowDrop(bb) {
-	
-	for(var b=bb; b>0; b--){
-		for(var a=0; a<14; a++){
-			
-			cellDrop(a, b);
 
-		}
-	}
-}
 
 function cellDrop(a, b) {
 	
@@ -85,4 +69,16 @@ function cellDrop(a, b) {
 		}
 	}
 	
+}
+
+function scoreBlock(a, b){
+	if(ww.bmap[a, b].sprite_index == imgBlockFish){ ww.fish ++; }
+	
+	instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effBlockRemove);
+	instance_destroy(ww.bmap[a, b]);
+	ww.bmap[a, b] = noone;
+	score ++;
+	ww.stageScore ++;
+	
+	stageCheck(false);
 }

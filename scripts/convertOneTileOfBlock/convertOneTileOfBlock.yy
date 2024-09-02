@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"convertOneTileOfBlock",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"convertOneTileOfBlock",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
