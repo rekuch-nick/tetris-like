@@ -55,6 +55,49 @@ function zoneStuff(){
 				specBlockIncoming = imgBlockDrillBit;
 			}
 		}
+	
+	} else if(ww.zone == "Bait Shop"){
+		if(specBlockIncoming == noone){
+			if(pSPawn > 8){
+				pSPawn = irandom_range(0, 2);
+				specBlockIncoming = imgBlockWorm01;
+			} else if(irandom_range(1, 4) == 1){
+				specBlockIncoming = imgBlockFish2;
+			}
+		}
+		
+	} else if(ww.zone == "Match 3"){
+		if(specBlockIncoming == noone){
+			specBlockIncoming = imgBlockMatch01;
+			
+			if(pSPawn > 21){
+				pSPawn = irandom_range(0, 3);
+				specBlockIncoming = imgBlockMatchWild;
+			}
+			
+		}
+	
+	} else if(ww.zone == "Frost Fade"){
+		if(specBlockIncoming == noone){
+			specBlockIncoming = imgBlockIce;
+			
+			
+			if(pSPawn > 13){
+				pSPawn = irandom_range(0, 3);
+				specBlockIncoming = unitClipboard;
+				unitClipboard = unitClipboard == imgBlockWitch ? imgBlockSun : imgBlockWitch;
+			}
+		}
+	
+	} else if(ww.zone == "Grassland"){
+		
+		if(sc % 7 == 0){ horseSpawn(); }
+		if(specBlockIncoming == noone){
+			if(pSPawn > 7){
+				pSPawn = irandom_range(0, 6);
+				specBlockIncoming = choose(imgBlockCarrot, imgBlockClean);
+			}	
+		}
 		
 	} else {
 		//endless
@@ -73,7 +116,7 @@ function zoneStuff(){
 	}
 	
 	
-	
+	if(canMatch3){ checkMatch3(); }
 	
 	//spec bloc steps
 	if(activeBlock != noone && activeBlock.map[0, 0] == imgBlockSun){

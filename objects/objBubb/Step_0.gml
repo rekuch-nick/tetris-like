@@ -6,9 +6,12 @@ if(ww.ms == 0 && ySpot > 0){
 	
 	if(cordInWater(ySpot - 1)){
 		if(ww.bmap[xSpot, ySpot - 1] == noone){
-			ww.bmap[xSpot, ySpot] = noone;
-			ySpot --;
-			ww.bmap[xSpot, ySpot] = id;
+			if(ww.activeBlock == noone || !blockCollidesPoint(ww.activeBlock, xSpot, ySpot - 1) ){
+			
+				ww.bmap[xSpot, ySpot] = noone;
+				ySpot --;
+				ww.bmap[xSpot, ySpot] = id;
+			}
 		}
 		
 	} else if(!cordInWater(ySpot)){

@@ -22,7 +22,14 @@ function rowCheck(){
 				if(ww.bmap[a, b].sprite_index == imgBlockIchor){
 					instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effBlockRemove);
 					ww.bmap[a, b].sprite_index = imgBlockClean;
-					
+				} else if(ww.canMatch3 && (
+							ww.bmap[a, b].sprite_index == imgBlockMatch01 ||
+							ww.bmap[a, b].sprite_index == imgBlockMatch02 ||
+							ww.bmap[a, b].sprite_index == imgBlockMatch03 ||
+							ww.bmap[a, b].sprite_index == imgBlockMatch04 ||
+							ww.bmap[a, b].sprite_index == imgBlockMatch05
+							) ){
+								
 				//} else if(ww.bmap[a, b].sprite_index == imgBlockWalker){
 				//	instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effBlockRemove);
 				//	instance_destroy(ww.bmap[a, b]);
@@ -36,7 +43,7 @@ function rowCheck(){
 				}
 			}
 			
-		}
+		} // end of sum >= 14
 		
 	}
 	
@@ -48,6 +55,11 @@ function rowCheck(){
 	ww.lines += lines;
 	if(lines == 2){ ww.lines2 ++; }
 	if(lines == 3){ ww.lines3 ++; }
+	
+	
+	if(ww.canMatch3){ checkMatch3(); }
+	
+	
 	
 	//ww.fallCDMax -= .1;
 	
@@ -74,11 +86,19 @@ function cellDrop(a, b) {
 function scoreBlock(a, b){
 	if(ww.bmap[a, b].sprite_index == imgBlockFish){ ww.fish ++; }
 	
+	if(ww.linesMatter || 
+				(isMatch3Block(ww.bmap[a, b].sprite_index) && ww.canMatch3)
+	
+							){
+		score ++;
+		ww.stageScore ++;
+	}
+	
 	instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effBlockRemove);
 	instance_destroy(ww.bmap[a, b]);
 	ww.bmap[a, b] = noone;
-	score ++;
-	ww.stageScore ++;
+	
+	
 	
 	stageCheck(false);
 }

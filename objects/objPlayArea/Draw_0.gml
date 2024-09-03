@@ -17,7 +17,7 @@ for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
 
 
 
-if(ww.activeBlock != noone && ww.activeBlock.map[0, 0] != imgBlockSun && ww.state != State.pause){
+if(ww.activeBlock != noone && ww.activeBlock.map[0, 0] != imgBlockSun && (ww.state != State.pause) ){
 	draw_set_alpha(.2);
 	for(var a=0; a<ww.activeBlock.wid; a++){
 		var top = -1;

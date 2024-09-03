@@ -1,6 +1,26 @@
 icd = max(icd - 1, 0);
 input();
 
+
+
+
+
+
+//debug
+if((state == State.play || state == State.pause) && debugPossible){
+	if(clickBackSpace){ debugMode = !debugMode; }
+	if(debugMode){
+		if(clickPageUp){ stageCheck(true); }
+		if(clickPageDown){ zoneListIndex = clamp(zoneListIndex - 2, -1, array_length(zoneList) - 1); stageCheck(true); }
+		if(keyboard_check_pressed(vk_insert)){ printMap(); }
+	}
+}
+
+
+
+
+
+
 if(state == State.pause){
 	if(clickEscape || clickEnter){ state = State.play; return; }
 }
@@ -116,13 +136,11 @@ if(fallCD >= fallCDMax){
 	fallCD = 0;
 }
 
+
+sunshineMelt();
+carrotFeed();
+
+
 if(clickEscape){ ww.state = State.pause; }
 
-//debug
-if(debugPossible){
-	if(clickBackSpace){ debugMode = !debugMode; }
-	if(debugMode){
-		if(clickPageUp){ stageCheck(true); }
-		if(clickPageDown){ zoneListIndex = clamp(zoneListIndex - 2, -1, array_length(zoneList) - 1); stageCheck(true); }
-	}
-}
+

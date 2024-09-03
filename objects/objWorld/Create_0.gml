@@ -14,6 +14,7 @@ for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
 }}
 
 
+
 instance_create_depth(0, 0, -1000, objScreenTitle);
 
 lines = 0;
@@ -38,7 +39,8 @@ hr = 0;
 specBlockIncoming = noone;
 
 
-zoneList = ["Farm", "Fish Tank", "Rad Dump", "Pond", "Mine", "Plain", "Endless"];
+unitClipboard = noone;
+zoneList = ["Farm", "Fish Tank", "Rad Dump", "Pond", "Mine", "Match 3", "Bait Shop", "Frost Fade", "Grassland", "Endless"];
 zoneListIndex = 0;
 zone = zoneList[zoneListIndex];
 linesMatter =  true;
@@ -56,6 +58,7 @@ waterFade = 0;
 waterLevel = 0;
 waterBank = 0;
 fishMatter = false; fish = 0;
+canMatch3 = false;
 
 
 zoneSetup();

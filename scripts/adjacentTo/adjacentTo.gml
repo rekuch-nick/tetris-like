@@ -27,3 +27,5 @@ function adjacentCords(a, b){
 	}
 	return result;
 }
+
+

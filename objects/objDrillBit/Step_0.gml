@@ -15,5 +15,7 @@ if(timeCD > 60){
 	//cellDrop(xSpot, ySpot-1);
 	instance_destroy();
 	
-	rowCheck();
+	with(objWorld){
+		rowCheck();
+	}
 }
