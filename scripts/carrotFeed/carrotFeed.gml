@@ -12,6 +12,10 @@ function carrotFeed(){
 			if(ww.bmap[a, b].sprite_index = imgBlockHorse){
 				scoreBlock(a, b);
 				instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effCarrot);
+			} else if(ww.bmap[a, b].sprite_index = imgBlockHorseWhite){
+				scoreBlock(a, b);
+				ww.bmap[a, b] = instance_create_depth(pa.x + a * 32, pa.y + b * 32, -700, objHorseWild);
+				instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effCarrot);
 			}
 		}
 	}

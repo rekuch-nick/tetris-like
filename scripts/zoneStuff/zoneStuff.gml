@@ -37,11 +37,11 @@ function zoneStuff(){
 		
 	} else if(ww.zone == "Pond"){
 		if(specBlockIncoming == noone){
-			if(irandom_range(1, 4) == 1){
+			if(irandom_range(1, 5) == 1){
 				specBlockIncoming = imgBlockBub;
 			}
 		
-			if(pSPawn > 20){
+			if(pSPawn > 19){
 				pSPawn = irandom_range(0, 4);
 				specBlockIncoming = imgBlockMopHead;
 			}
@@ -90,20 +90,28 @@ function zoneStuff(){
 		}
 	
 	} else if(ww.zone == "Grassland"){
-		
+		if(ww.waterLevel > 0){ww.waterBank --; }
 		if(sc % 7 == 0){ horseSpawn(); }
 		if(specBlockIncoming == noone){
-			if(pSPawn > 7){
+			if(pSPawn > 12){
 				pSPawn = irandom_range(0, 6);
-				specBlockIncoming = choose(imgBlockCarrot, imgBlockClean);
+				specBlockIncoming = imgBlockCarrot;
 			}	
 		}
+		
+	} else if(ww.zone == "Black Gold"){
+		if(sc % 7 == 0 && irandom_range(1, 4) == 1){ wandererSpawn(); }
+		if(specBlockIncoming == noone){
+			if(irandom_range(1, 4) == 1){ specBlockIncoming = imgBlockOil; }
+			if(irandom_range(1, 10) == 1){ specBlockIncoming = imgBlockCoal; }
+		}
+		
 		
 	} else {
 		//endless
 		
 		if(ww.fruitsMatter && sc % 8 == 0 && irandom_range(1, 2) == 1){ instance_create_depth(room_width, 100, -600, objCherry); }
-		if(sc % 15 == 0 && irandom_range(1, 10) == 1){ wandererSpawn(); }
+		if(sc % 15 == 0 && irandom_range(1, 12) == 1){ wandererSpawn(); }
 		if(sc % 15 == 0 && irandom_range(1, 3) == 1){ ww.waterBank += choose(32, 32, 64); }
 	
 		

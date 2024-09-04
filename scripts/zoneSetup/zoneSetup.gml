@@ -1,5 +1,6 @@
 function zoneSetup(){
 	
+	ww.normalBlocks = "standard";
 	
 	ww.specBlockIncoming = noone;
 	ww.linesMatter = true; ww.stageScore = 0;
@@ -50,6 +51,11 @@ function zoneSetup(){
 		waterAlpha = .2; waterAlphaMin = .2; waterAlphaMax = .2;
 		waterFade = 0;
 		
+	}
+	
+	if(ww.zone == "Grassland"){
+		ww.normalBlocks = "easy";
+		unitClipboard = imgBlockCarrot;
 	}
 	
 	

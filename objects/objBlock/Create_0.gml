@@ -109,6 +109,17 @@ if(ww.specBlockIncoming == imgBlockDrillBit){
 	map[1, 1] = choose(imgBlockMatch01, imgBlockMatch02, imgBlockMatch03, imgBlockMatch04, imgBlockMatch05);
 	map[1, 2] = choose(imgBlockMatch01, imgBlockMatch02, imgBlockMatch03, imgBlockMatch04, imgBlockMatch05);
 	ww.specBlockIncoming = noone;
+
+
+} else if (ww.specBlockIncoming == imgBlockOil){
+	createBlockStandard();
+	convertOneTileOfBlock(imgBlockOil);
+	ww.specBlockIncoming = noone;
+	
+} else if (ww.specBlockIncoming == imgBlockCoal){
+	createBlockStandard();
+	convertOneTileOfBlock(imgBlockCoal);
+	ww.specBlockIncoming = noone;
 	
 } else if (ww.specBlockIncoming != noone) {
 	map[0, 0] = ww.specBlockIncoming;
@@ -119,4 +130,10 @@ if(ww.specBlockIncoming == imgBlockDrillBit){
 	
 	
 	
-} else { createBlockStandard();	}
+} else { 
+	if(ww.normalBlocks == "easy"){
+		createBlockEasy();
+	} else {
+		createBlockStandard();
+	}
+}

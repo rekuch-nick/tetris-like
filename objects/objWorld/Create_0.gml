@@ -40,8 +40,8 @@ specBlockIncoming = noone;
 
 
 unitClipboard = noone;
-zoneList = ["Farm", "Fish Tank", "Rad Dump", "Pond", "Mine", "Match 3", "Bait Shop", "Frost Fade", "Grassland", "Endless"];
-zoneListIndex = 0;
+zoneList = ["Plain", "Farm", "Fish Tank", "Rad Dump", "Pond", "Mine", "Match 3", "Bait Shop", "Frost Fade", "Grassland", "Black Gold", "Endless"];
+zoneListIndex = 1;
 zone = zoneList[zoneListIndex];
 linesMatter =  true;
 zoneProgMax = 300;

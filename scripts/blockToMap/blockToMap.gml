@@ -25,6 +25,8 @@ function blockToMap(blo){
 			if(map[a, b] == imgBlockMatch04){ t = objMatch3; }
 			if(map[a, b] == imgBlockMatch05){ t = objMatch3; }
 			if(map[a, b] == imgBlockHorse){ t = objHorse; }
+			if(map[a, b] == imgBlockOil){ t = objOil; }
+			if(map[a, b] == imgBlockCoal){ t = objCoal; }
 			
 			
 			ww.bmap[aa, bb] = instance_create_depth(pa.x + aa * 32, pa.y + bb * 32, -300, t);

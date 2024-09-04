@@ -13,6 +13,8 @@ if((state == State.play || state == State.pause) && debugPossible){
 		if(clickPageUp){ stageCheck(true); }
 		if(clickPageDown){ zoneListIndex = clamp(zoneListIndex - 2, -1, array_length(zoneList) - 1); stageCheck(true); }
 		if(keyboard_check_pressed(vk_insert)){ printMap(); }
+		if(keyboard_check_pressed(vk_home)){ waterBank += 32; }
+		if(keyboard_check_pressed(vk_end)){ waterBank -= 32; }
 	}
 }
 
@@ -51,14 +53,8 @@ if(ms >= 30){
 }
 
 //water
-if(waterBank > 0){
-	waterBank --;
-	waterLevel = clamp(waterLevel + 1, 0, pa.sprite_height);
-}
-if(waterBank < 0){
-	waterBank ++;
-	waterLevel = clamp(waterLevel - 1, 0, pa.sprite_height);
-}
+if(waterBank > 0){  waterRise(1); }
+if(waterBank < 0){ waterRise(-1); }
 
 
 //spawn block
@@ -104,8 +100,14 @@ if( (xIn < 0 && icd < 1) || xClick < 0){ slideBlock(activeBlock, -1); icd = 5; }
 if( (xIn > 0 && icd < 1) || xClick > 0){ slideBlock(activeBlock, 1); icd = 5; }
 
 //rapid block
-if(yIn > 0 && fallCD >= 0){ fallCD = fallCDMax; }
-
+if(yIn > 0 && fallCD >= 0){ 
+	if(fallCD + 2 < fallCDMax){
+		fallCD = fallCDMax - 1; 
+	} else {
+		fallCD = fallCDMax; 
+	}
+}
+//todo - easier to stop? small deley
 
 
 

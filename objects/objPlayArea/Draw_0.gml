@@ -132,7 +132,7 @@ if(ww.waterLevel > 0){
 
 
 if(ww.debugMode){
-	draw_text(32, 0, "Dev Mode ON")
+	draw_text(32, 0, "Dev Mode ON      " + string(ww.stageScore) + " / " + string(ww.zoneProgMax) );
 	
 }
 

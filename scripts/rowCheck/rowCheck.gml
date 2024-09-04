@@ -84,6 +84,8 @@ function cellDrop(a, b) {
 }
 
 function scoreBlock(a, b){
+	if(!inBounds(a, b)){ return; }
+	if(ww.bmap[a, b] == noone){ return; }
 	if(ww.bmap[a, b].sprite_index == imgBlockFish){ ww.fish ++; }
 	
 	if(ww.linesMatter || 

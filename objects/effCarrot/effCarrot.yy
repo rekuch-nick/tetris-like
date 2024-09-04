@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"imgBlockCarrot",
-    "path":"sprites/imgBlockCarrot/imgBlockCarrot.yy",
+    "name":"imgBlockCarrotBitten",
+    "path":"sprites/imgBlockCarrotBitten/imgBlockCarrotBitten.yy",
   },
   "spriteMaskId":null,
   "visible":true,
