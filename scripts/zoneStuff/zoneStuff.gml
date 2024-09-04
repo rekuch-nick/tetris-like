@@ -4,15 +4,17 @@ function zoneStuff(){
 		
 		if(specBlockIncoming == noone){
 		
-			if(pSPawn > 10){
-				pSPawn -= irandom_range(0, pSPawn);
+			if(pSPawn > 5){
+			//if(pSPawn > 10){
+				//pSPawn -= irandom_range(0, pSPawn);
+				pSPawn = 0;
 				specBlockIncoming = imgBlockSeed;
-			} else if(irandom_range(1, 8) == 1){
-				specBlockIncoming = imgBlockFox01;
-			} else if(irandom_range(1, 13) == 1){
-				specBlockIncoming = imgBlockChicken;
-			} else if(irandom_range(1, 20) == 1){
-				specBlockIncoming = imgBlockSun;
+			} else {
+				if(irandom_range(1, 8) == 1){ specBlockIncoming = imgBlockFox01; }
+				if(irandom_range(1, 20) == 1){ specBlockIncoming = imgBlockSun; }
+				if(ww.foxBucks >= 10 && irandom_range(1, 4) == 1){ 
+					specBlockIncoming = imgBlockChicken; 
+				}
 			}
 		}
 		
@@ -106,8 +108,14 @@ function zoneStuff(){
 			if(irandom_range(1, 10) == 1){ specBlockIncoming = imgBlockCoal; }
 		}
 		
+	} else if(ww.zone == "Zoo"){
+		
+		
+		
 		
 	} else {
+		if(array_length(spawnArray) < 1){ return; }
+		
 		//endless
 		
 		if(ww.fruitsMatter && sc % 8 == 0 && irandom_range(1, 2) == 1){ instance_create_depth(room_width, 100, -600, objCherry); }

@@ -1,6 +1,6 @@
 draw_self();
 draw_set_halign(fa_center);
-draw_text_transformed_color(room_width / 2, 80, "Tetra Apros", 2, 2, 0, c_white, c_lime, c_yellow, c_white, 1);
+draw_text_transformed_color(room_width / 2, 80, "Tetra Bazaar", 2, 2, 0, c_white, c_lime, c_yellow, c_white, 1);
 draw_text_color(room_width / 2, 170, "Press [ENTER] to start", c_yellow, c_yellow, c_yellow, c_yellow, 1);
 draw_set_halign(fa_left);
 

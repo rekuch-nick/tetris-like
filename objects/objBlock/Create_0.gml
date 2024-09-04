@@ -34,6 +34,7 @@ if(ww.specBlockIncoming == imgBlockDrillBit){
 	hei = 1;
 	map[0, 0] = imgBlockSeed;
 } else if (ww.specBlockIncoming == imgBlockFox01) {
+	ww.foxBucks ++;
 	if(choose(true, false)){ ww.specBlockIncoming = noone; }
 	wid = 2;
 	hei = 2;
@@ -43,6 +44,7 @@ if(ww.specBlockIncoming == imgBlockDrillBit){
 	map[1, 1] = imgBlockFox04;
 	canTurn = false;
 } else if (ww.specBlockIncoming == imgBlockChicken) {
+	ww.foxBucks = 0;
 	ww.specBlockIncoming = noone;
 	wid = 1; hei = 1;
 	map[0, 0] = imgBlockChicken;

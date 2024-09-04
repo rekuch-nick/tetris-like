@@ -1,10 +1,11 @@
 function checkMatch3(){
 	
 	checkMatch3Impl();
+	var tot = 0;
 	for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
 		if(amap[a, b] == 1){
 			scoreBlock(a, b);
-			
+			tot ++;
 			
 			/*for(var aa=a-1; aa<=a+1; aa++){
 				for(var bb=b-1; bb<=b+1; bb++){
@@ -17,6 +18,7 @@ function checkMatch3(){
 			}*/
 		}
 	}}
+	
 	
 	
 }

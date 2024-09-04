@@ -15,6 +15,7 @@ if((state == State.play || state == State.pause) && debugPossible){
 		if(keyboard_check_pressed(vk_insert)){ printMap(); }
 		if(keyboard_check_pressed(vk_home)){ waterBank += 32; }
 		if(keyboard_check_pressed(vk_end)){ waterBank -= 32; }
+		if(keyboard_check_pressed(vk_delete)){ stageScore = 0; }
 	}
 }
 
@@ -64,12 +65,7 @@ if(activeBlock == noone){
 	if(nextBlock == noone){ instance_create_depth(0, 0, -500, objBlock); }
 	
 	activeBlock = nextBlock;
-	with(activeBlock){
-		xSpot = 6;
-		ySpot = 0;
-		
-	}
-	
+	with(activeBlock){ xSpot = 6; ySpot = 0; }
 	
 	nextBlock = instance_create_depth(0, 0, -500, objBlock);
 	fallCD = -10;

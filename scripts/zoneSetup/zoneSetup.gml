@@ -2,26 +2,27 @@ function zoneSetup(){
 	
 	ww.normalBlocks = "standard";
 	
+	ww.foxBucks = 0;
 	ww.specBlockIncoming = noone;
 	ww.linesMatter = true; ww.stageScore = 0;
 	ww.zoneProgMax = 300;
 	ww.waterBank = -ww.waterLevel;
 	ww.fish = 0; ww.fishMatter = false;
 	ww.fruit = 0; ww.fruitsMatter = false;
-	if(ww.nextBlock != noone){ instance_destroy(ww.nextBlock); ww.nextBlock = noone; }
+	//if(ww.nextBlock != noone){ instance_destroy(ww.nextBlock); ww.nextBlock = noone; }
 	//if(ww.activeBlock != noone){ instance_destroy(ww.activeBlock); ww.activeBlock = noone; }
 	ww.nextBlock = noone;
 	ww.canMatch3 = false;
 	
 	if(ww.zone == "Match 3"){
 		ww.canMatch3 = true;
-		ww.zoneProgMax = 180;
+		ww.zoneProgMax = 100;
 		ww.linesMatter = false;
 	}
 	
 	
 	if(ww.zone == "Fish Tank"){
-		waterCol1 = c_aqua; waterCol2 = c_aqua; waterCol3 = c_aqua; waterCol4 = c_aqua;
+		waterCol1 = c_aqua; waterCol2 = c_aqua; waterCol3 = c_green; waterCol4 = c_green;
 		waterAlpha = .2; waterAlphaMin = .2; waterAlphaMax = .2;
 		waterFade = 0;
 		
@@ -32,7 +33,7 @@ function zoneSetup(){
 	
 	
 	if(ww.zone == "Pond"){
-		waterCol1 = c_aqua; waterCol2 = c_aqua; waterCol3 = c_aqua; waterCol4 = c_aqua;
+		waterCol1 = c_aqua; waterCol2 = c_aqua; waterCol3 = c_blue; waterCol4 = c_blue;
 		waterAlpha = .2; waterAlphaMin = .2; waterAlphaMax = .2;
 		waterFade = 0;
 		
@@ -47,7 +48,7 @@ function zoneSetup(){
 	
 	if(ww.zone == "Frost Fade"){
 		unitClipboard = imgBlockWitch;
-		waterCol1 = c_blue; waterCol2 = c_blue; waterCol3 = c_blue; waterCol4 = c_blue;
+		waterCol1 = c_blue; waterCol2 = c_blue; waterCol3 = c_purple; waterCol4 = c_purple;
 		waterAlpha = .2; waterAlphaMin = .2; waterAlphaMax = .2;
 		waterFade = 0;
 		
@@ -58,12 +59,20 @@ function zoneSetup(){
 		unitClipboard = imgBlockCarrot;
 	}
 	
-	
+	if(ww.zone == "Zoo"){
+		waterCol1 = c_aqua; waterCol2 = c_aqua; waterCol3 = c_blue; waterCol4 = c_lime;
+		waterAlpha = .2; waterAlphaMin = .2; waterAlphaMax = .2;
+		waterFade = 0;
+		
+		ww.waterBank += 32 * 11;
+	}
 	
 	
 	if(ww.zone == "Endless"){
-		waterCol1 = choose(c_aqua, c_blue, c_purple, c_green, c_yellow); 
-		waterCol2 = waterCol1 ; waterCol3 = waterCol1 ; waterCol4 = waterCol1 ;
+		waterCol1 = choose(c_aqua, c_fuchsia, c_lime, c_yellow); 
+		waterCol2 = waterCol1 ; 
+		waterCol3 = choose(c_blue, c_purple, c_green); 
+		waterCol4 = waterCol3 ;
 		waterAlpha = .2; waterAlphaMin = .2; waterAlphaMax = .2;
 		waterFade = 0;
 		
@@ -103,5 +112,12 @@ function zoneSetup(){
 			ww.zoneProgMax = 20;
 		}
 	}
+	
+	
+	
+	
 
+	
+	
+	
 }
