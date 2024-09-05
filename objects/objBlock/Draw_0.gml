@@ -25,6 +25,10 @@ if(ww.activeBlock == id){
 		}
 	}}
 	
+	if(txt != ""){
+		draw_text_ext(22, 200, txt, 30, 300);
+	}
+	
 }
 
 

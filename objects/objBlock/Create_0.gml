@@ -7,9 +7,9 @@ wid = 3; hei = 3;
 
 canTurn = true;
 isChicken = false;
-
-
-
+canStick = false;
+stickTime = 0;
+txt = "";
 
 
 if(ww.specBlockIncoming == imgBlockDrillBit){
@@ -19,6 +19,7 @@ if(ww.specBlockIncoming == imgBlockDrillBit){
 	map[1, 0] = imgBlockDrill;
 	map[1, 1] = imgBlockDrill;
 	map[1, 2] = imgBlockDrillBit;
+	txt = "Pushes a column down one"
 	
 } else if(ww.specBlockIncoming == imgBlockMopHead){
 	ww.specBlockIncoming = noone;
@@ -35,6 +36,7 @@ if(ww.specBlockIncoming == imgBlockDrillBit){
 	map[0, 0] = imgBlockSeed;
 } else if (ww.specBlockIncoming == imgBlockFox01) {
 	ww.foxBucks ++;
+	txt = "Many may appear";
 	if(choose(true, false)){ ww.specBlockIncoming = noone; }
 	wid = 2;
 	hei = 2;
@@ -44,6 +46,7 @@ if(ww.specBlockIncoming == imgBlockDrillBit){
 	map[1, 1] = imgBlockFox04;
 	canTurn = false;
 } else if (ww.specBlockIncoming == imgBlockChicken) {
+	txt = "Foxes can't get enough";
 	ww.foxBucks = 0;
 	ww.specBlockIncoming = noone;
 	wid = 1; hei = 1;
@@ -84,6 +87,7 @@ if(ww.specBlockIncoming == imgBlockDrillBit){
 	convertAllTilesOfBlock(imgBlockRock);
 	repeat(choose(0, 0, 0, 0, 1, 1, 1, 2)){
 		convertOneTileOfBlock(imgBlockSand);
+		txt = "Sand won't last long"
 	}
 	ww.specBlockIncoming = noone;
 	
@@ -123,11 +127,32 @@ if(ww.specBlockIncoming == imgBlockDrillBit){
 	convertOneTileOfBlock(imgBlockCoal);
 	ww.specBlockIncoming = noone;
 	
+	
+} else if (ww.specBlockIncoming == imgBlockUnbreakable){
+	createBlockEasy();
+	convertOneTileOfBlock(imgBlockUnbreakable);
+	ww.specBlockIncoming = noone;
+	
+} else if (ww.specBlockIncoming == imgBlockUp){
+	createBlockStandard();
+	convertOneTileOfBlock(imgBlockUp);
+	if(irandom_range(1, 4) == 1){ convertOneTileOfBlock(imgBlockUp); }
+	ww.specBlockIncoming = noone;
+	
+
+	
+	
 } else if (ww.specBlockIncoming != noone) {
+	if(ww.specBlockIncoming == imgBlockClampL || ww.specBlockIncoming == imgBlockClampR) {
+		txt = "Hold UP to freeze";
+		canStick = true;
+	}
 	map[0, 0] = ww.specBlockIncoming;
 	ww.specBlockIncoming = noone;
 	wid = 1; hei = 1;
 	
+
+
 	
 	
 	
@@ -135,6 +160,8 @@ if(ww.specBlockIncoming == imgBlockDrillBit){
 } else { 
 	if(ww.normalBlocks == "easy"){
 		createBlockEasy();
+	} else if(ww.normalBlocks == "hard"){
+		createBlockHard();
 	} else {
 		createBlockStandard();
 	}

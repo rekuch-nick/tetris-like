@@ -7,7 +7,7 @@ function stageCheck(autoWin){
 	if(		autoWin || (
 			(!ww.fishMatter || ww.fish >= ww.zoneProgMax) &&
 			(!ww.fruitsMatter || ww.fruit >= ww.zoneProgMax) &&
-			(ww.stageScore >= ww.zoneProgMax) ) ){
+			( (ww.stageScore >= ww.zoneProgMax) || !ww.linesMatter) ) ){
 		
 		
 		

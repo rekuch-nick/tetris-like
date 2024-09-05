@@ -27,6 +27,12 @@ function blockToMap(blo){
 			if(map[a, b] == imgBlockHorse){ t = objHorse; }
 			if(map[a, b] == imgBlockOil){ t = objOil; }
 			if(map[a, b] == imgBlockCoal){ t = objCoal; }
+			if(map[a, b] == imgBlockClampL){ t = objClampL; }
+			if(map[a, b] == imgBlockClampR){ t = objClampR; }
+			if(map[a, b] == imgBlockUp){ t = objUp; }
+			
+			
+			
 			
 			
 			ww.bmap[aa, bb] = instance_create_depth(pa.x + aa * 32, pa.y + bb * 32, -300, t);
@@ -34,9 +40,24 @@ function blockToMap(blo){
 			
 			if(map[a, b] == imgBlockChicken){ chickenCheck(aa, bb); }
 			if(map[a, b] == imgBlockCarrot){ scoreBlock(aa, bb); }
+			if(map[a, b] == imgNeedle){ 
+				scoreBlock(aa, bb);
+				with(objUp){ 
+					scoreBlock(xSpot, ySpot); 
+					dropCol(xSpot, ySpot, 0);
+				}
+				
+			}
+			if(map[a, b] == imgFrog){ 
+				if(bb == 17){ scoreBlock(aa, bb); } else {
+					instance_destroy(ww.bmap[aa, bb]);
+					ww.bmap[aa, bb] = noone;
+				}
+				continue;
+			}
 			
 			
-			if(map[a, b] == imgBlockRadWaste){ repeat(8){ichor(); } }
+			if(ww.bmap[aa, bb] != noone && map[a, b] == imgBlockRadWaste){ repeat(8){ichor(); } }
 			
 			if(ww.bmap[aa, bb] != noone && ww.bmap[aa, bb].sprite_index == imgBlockWitch){ 
 				if(!cordInWater(bb)){

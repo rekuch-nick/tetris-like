@@ -34,7 +34,7 @@ if(ms >= 30){
 	ms -= 30;
 	sc ++;
 	
-	
+	stageCheck(false);
 	zoneStuff();
 	
 	
@@ -89,7 +89,16 @@ if(activeBlock == noone){
 }
 
 //spin
-if(clickSpace && activeBlock.canTurn){ rotateClockwise(activeBlock); }
+if(clickSpace && activeBlock.canTurn){ 
+	
+	if(activeBlock.map[0, 0] == imgBlockClampL){
+		activeBlock.map[0, 0] = imgBlockClampR;
+	} else if(activeBlock.map[0, 0] == imgBlockClampR){
+		activeBlock.map[0, 0] = imgBlockClampL;
+	} else {
+		rotateClockwise(activeBlock); 
+	}
+}
 
 //slide block
 if( (xIn < 0 && icd < 1) || xClick < 0){ slideBlock(activeBlock, -1); icd = 5; }
@@ -97,7 +106,9 @@ if( (xIn > 0 && icd < 1) || xClick > 0){ slideBlock(activeBlock, 1); icd = 5; }
 
 //rapid block
 if(yIn > 0 && fallCD >= 0){ 
-	if(fallCD + 2 < fallCDMax){
+	if(activeBlock.map[0, 0] == imgFrog){
+		
+	} else if(fallCD + 2 < fallCDMax){
 		fallCD = fallCDMax - 1; 
 	} else {
 		fallCD = fallCDMax; 
@@ -106,12 +117,25 @@ if(yIn > 0 && fallCD >= 0){
 //todo - easier to stop? small deley
 
 
-
+var forceGround = false;
 //slow block
 if(yIn < 0 && ms % 2 == 0){
 	fallCD --;
+	
+	if(activeBlock.canStick){
+		fallCD = 0;
+		activeBlock.stickTime ++;
+		if(activeBlock.stickTime >= 20){
+			forceGround = true;
+			fallCD = fallCDMax;
+		}
+	}
+	
 }
-
+if(yIn == 0 && activeBlock != noone){ 
+	
+	activeBlock.stickTime = 0; 
+}
 
 
 //block falls
@@ -119,7 +143,7 @@ fallCD ++;
 if(fallCD >= fallCDMax){
 	if(activeBlock == noone){ return; }
 	
-	if(blockOnGround(activeBlock)){
+	if(blockOnGround(activeBlock) || forceGround){
 		
 		blockToMap(activeBlock);
 		rowCheck();

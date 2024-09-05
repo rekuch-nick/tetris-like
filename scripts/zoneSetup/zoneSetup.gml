@@ -1,5 +1,14 @@
 function zoneSetup(){
 	
+	for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
+		if(ww.bmap[a, b] != noone){
+			if(ww.bmap[a, b].sprite_index == imgBlockUnbreakable){
+				scoreBlock(a, b);
+				dropCol(a, b, 0);
+			}
+		}
+	}}
+	
 	ww.normalBlocks = "standard";
 	
 	ww.foxBucks = 0;
@@ -19,6 +28,8 @@ function zoneSetup(){
 		ww.zoneProgMax = 100;
 		ww.linesMatter = false;
 	}
+	
+	
 	
 	
 	if(ww.zone == "Fish Tank"){
@@ -59,12 +70,34 @@ function zoneSetup(){
 		unitClipboard = imgBlockCarrot;
 	}
 	
+	if(ww.zone == "Day Labor"){
+		ww.normalBlocks = "easy";
+		ww.linesMatter = false;
+		ww.fruitsMatter = true;
+		ww.zoneProgMax = 10;
+	}
+	
 	if(ww.zone == "Zoo"){
 		waterCol1 = c_aqua; waterCol2 = c_aqua; waterCol3 = c_blue; waterCol4 = c_lime;
 		waterAlpha = .2; waterAlphaMin = .2; waterAlphaMax = .2;
 		waterFade = 0;
 		
 		ww.waterBank += 32 * 11;
+	}
+	
+	if(ww.zone == "Fun Zone"){
+		ww.normalBlocks = "hard";
+		unitClipboard = choose(imgBlockClampL, imgBlockClampR);
+	}
+	
+	if (ww.zone == "Frog Or ?"){
+		for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
+		if(ww.bmap[a, b] != noone){
+				instance_destroy(ww.bmap[a, b]);
+				ww.bmap[a, b] = noone;
+			}
+		}}
+		ww.zoneProgMax = 4;
 	}
 	
 	

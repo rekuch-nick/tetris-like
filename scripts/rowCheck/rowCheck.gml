@@ -22,6 +22,8 @@ function rowCheck(){
 				if(ww.bmap[a, b].sprite_index == imgBlockIchor){
 					instance_create_depth(pa.x + a * 32, pa.y + b * 32, -800, effBlockRemove);
 					ww.bmap[a, b].sprite_index = imgBlockClean;
+				} else if(ww.bmap[a, b].sprite_index == imgBlockUnbreakable){
+					
 				} else if(ww.canMatch3 && (
 							ww.bmap[a, b].sprite_index == imgBlockMatch01 ||
 							ww.bmap[a, b].sprite_index == imgBlockMatch02 ||
@@ -102,5 +104,5 @@ function scoreBlock(a, b){
 	
 	
 	
-	stageCheck(false);
+	
 }

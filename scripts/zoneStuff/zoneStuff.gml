@@ -5,14 +5,12 @@ function zoneStuff(){
 		if(specBlockIncoming == noone){
 		
 			if(pSPawn > 5){
-			//if(pSPawn > 10){
-				//pSPawn -= irandom_range(0, pSPawn);
 				pSPawn = 0;
 				specBlockIncoming = imgBlockSeed;
 			} else {
 				if(irandom_range(1, 8) == 1){ specBlockIncoming = imgBlockFox01; }
 				if(irandom_range(1, 20) == 1){ specBlockIncoming = imgBlockSun; }
-				if(ww.foxBucks >= 10 && irandom_range(1, 4) == 1){ 
+				if(ww.foxBucks >= 7 && irandom_range(1, 4) == 1){ 
 					specBlockIncoming = imgBlockChicken; 
 				}
 			}
@@ -110,7 +108,39 @@ function zoneStuff(){
 		
 	} else if(ww.zone == "Zoo"){
 		
+	} else if(ww.zone == "Day Labor"){
+		if(sc % 11 == 0){ instance_create_depth(room_width, 100, -600, objCherry); }
+		if(specBlockIncoming == noone){
+			if(pSPawn > 3){
+				pSPawn = irandom_range(0, 1);
+				specBlockIncoming = imgBlockUnbreakable;
+			}
+		}
 		
+		
+	} else if(ww.zone == "Fun Zone"){
+		if(specBlockIncoming == noone){
+			if(irandom_range(1, 7) == 1){ 
+				specBlockIncoming = unitClipboard;
+				unitClipboard = unitClipboard == imgBlockClampL ? imgBlockClampR: imgBlockClampL;
+			}
+			if(irandom_range(1, 4) == 1){ specBlockIncoming = imgBlockUp; }
+			if(pSPawn > 17){
+				pSPawn = irandom_range(0, 1);
+				specBlockIncoming = imgNeedle;
+			}
+		}
+		
+	} else if (ww.zone == "Frog Or ?"){
+		specBlockIncoming = imgFrog;
+		
+		repeat(choose(2, 3)){
+			var b = choose(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17);
+			var a = b % 2 == 0 ? 0 : 13;
+			if(ww.bmap[a, b] == noone){
+				ww.bmap[a, b] = instance_create_depth(pa.x + a * 32, pa.y + b * 32, -600, objCar);
+			}
+		}
 		
 		
 	} else {
