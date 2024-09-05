@@ -5,3 +5,4 @@ grav = 0;
 fade = .02;
 timeCD = 45;
 flicker = false;
+xDirChangeChance = 0;

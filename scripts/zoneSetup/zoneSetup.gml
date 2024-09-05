@@ -1,5 +1,7 @@
 function zoneSetup(){
 	
+	fallCDMax = 30;
+	
 	for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
 		if(ww.bmap[a, b] != noone){
 			if(ww.bmap[a, b].sprite_index == imgBlockUnbreakable){
@@ -11,6 +13,8 @@ function zoneSetup(){
 	
 	ww.normalBlocks = "standard";
 	
+	ww.boil = false;
+	ww.frogsMatter = false;
 	ww.foxBucks = 0;
 	ww.specBlockIncoming = noone;
 	ww.linesMatter = true; ww.stageScore = 0;
@@ -91,6 +95,7 @@ function zoneSetup(){
 	}
 	
 	if (ww.zone == "Frog Or ?"){
+		ww.frogsMatter = true;
 		for(var a=0; a<14; a++){ for(var b=0; b<18; b++){
 		if(ww.bmap[a, b] != noone){
 				instance_destroy(ww.bmap[a, b]);
@@ -99,6 +104,22 @@ function zoneSetup(){
 		}}
 		ww.zoneProgMax = 4;
 	}
+	
+	if(ww.zone == "Hot Pot"){
+		waterCol1 = c_orange; waterCol2 = c_orange; waterCol3 = c_red; waterCol4 = c_red;
+		waterAlpha = .3; waterAlphaMin = .3; waterAlphaMax = .3;
+		waterFade = 0;
+		
+		ww.waterBank += 32 * 8;
+		ww.zoneProgMax = 100;
+		
+		boil = true;
+	}
+	
+	if(ww.zone == "TV Time"){
+		fallCDMax = 5;
+	}
+	
 	
 	
 	if(ww.zone == "Endless"){

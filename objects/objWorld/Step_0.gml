@@ -60,6 +60,7 @@ if(waterBank < 0){ waterRise(-1); }
 
 //spawn block
 if(activeBlock == noone){
+	
 	pSPawn ++;
 	
 	if(nextBlock == noone){ instance_create_depth(0, 0, -500, objBlock); }
@@ -161,6 +162,12 @@ if(fallCD >= fallCDMax){
 
 sunshineMelt();
 carrotFeed();
+if(boil){
+	ww.waterLevel += irandom_range(-8, 8);
+	if(ww.waterLevel < 32 * 5){ ww.waterLevel ++; }
+	if(ww.waterLevel > 32 * 7){ ww.waterLevel --; }
+}
+
 
 
 if(clickEscape){ ww.state = State.pause; }

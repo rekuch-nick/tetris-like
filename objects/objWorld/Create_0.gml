@@ -29,7 +29,7 @@ debugPossible = true;
 debugMode = false;
 spawnArray = [];
 pSPawn = 0;
-mpBank = 0;
+
 
 ms = 0;
 sc = 0;
@@ -40,7 +40,11 @@ specBlockIncoming = noone;
 
 
 unitClipboard = noone;
-zoneList = ["Plain", "Farm", "Fish Tank", "Rad Dump", "Pond", "Mine", "Match 3", "Bait Shop", "Frost Fade", "Grassland", "Black Gold", "Frog Or ?", "Day Labor", "Fun Zone", "Endless"];
+zoneList = ["Plain",
+	"Farm", "Fish Tank", "Rad Dump", "Pond", "Mine", 
+	"Match 3", "Bait Shop", "Frost Fade", "Grassland", "Black Gold", 
+	"Hot Pot", "Frog Or ?", "Day Labor", "Fun Zone", "This Side", "TV Time",
+	"Endless"];
 zoneListIndex = 1;
 zone = zoneList[zoneListIndex];
 linesMatter =  true;

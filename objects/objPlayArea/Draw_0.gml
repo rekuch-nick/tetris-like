@@ -66,6 +66,11 @@ if(ww.fruitsMatter){
 	draw_text(80, bb + 6, ww.fruit);
 	bb += 40;
 }
+if(ww.frogsMatter){
+	draw_sprite_stretched(imgFrog, 0, 40, bb, 32, 32);
+	draw_text(80, bb + 6, ww.stageScore);
+	bb += 40;
+}
 
 /*
 

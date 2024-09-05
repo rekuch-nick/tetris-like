@@ -1,4 +1,15 @@
 xSpot = -1; ySpot = -1;
+
+
+
+blockSelect();
+
+
+
+
+
+
+
 sprite_index = choose(imgBlock, imgBlock02, imgBlock03, imgBlock04);
 
 
@@ -10,6 +21,9 @@ isChicken = false;
 canStick = false;
 stickTime = 0;
 txt = "";
+
+
+
 
 
 if(ww.specBlockIncoming == imgBlockDrillBit){
@@ -139,6 +153,15 @@ if(ww.specBlockIncoming == imgBlockDrillBit){
 	if(irandom_range(1, 4) == 1){ convertOneTileOfBlock(imgBlockUp); }
 	ww.specBlockIncoming = noone;
 	
+} else if(ww.specBlockIncoming == imgBlockThisSideUp){
+	ww.specBlockIncoming = noone; canTurn = false;
+	createBlockWide();
+
+} else if(ww.specBlockIncoming == imgBlockStatic){
+	ww.specBlockIncoming = noone;
+	createBlockStandard();
+	convertAllTilesOfBlock(imgBlockStatic);
+
 
 	
 	

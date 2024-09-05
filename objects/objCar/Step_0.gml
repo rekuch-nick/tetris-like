@@ -19,10 +19,12 @@ if(thinkCD < 1){
 	}
 	
 	if(ww.activeBlock != noone){
-		if(ww.activeBlock.xSpot == xt && ww.activeBlock.ySpot == ySpot){
+		if(blockCollidesPoint(ww.activeBlock, xt, ySpot)){
+		//if(ww.activeBlock.xSpot == xt && ww.activeBlock.ySpot == ySpot){
 			instance_destroy(ww.activeBlock);
 			ww.activeBlock = noone;
-		} else if(ww.activeBlock.xSpot == xSpot && ww.activeBlock.ySpot == ySpot){
+		//} else if(ww.activeBlock.xSpot == xSpot && ww.activeBlock.ySpot == ySpot){
+		} else if(blockCollidesPoint(ww.activeBlock, xSpot, ySpot)){
 			instance_destroy(ww.activeBlock);
 			ww.activeBlock = noone;
 		}

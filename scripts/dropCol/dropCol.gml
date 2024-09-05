@@ -6,7 +6,6 @@ function dropCol(x1, y11, y22){
 	if(!inBounds(x1, y1)){ return; }
 	if(!inBounds(x1, y2)){ return; }
 	
-	//print(string(x1) + ", " + string(y2));
 	
 	
 	if(ww.bmap[x1, y2] != noone){
